@@ -76,10 +76,7 @@ const DrawerForSmallScreen = ({open, onClose}) =>(
                 {
                    pages.map((page,index) => (
                     <ListItem key={index} disablePadding>
-                        {/* null safety (?):
-                            variable?.key
-                            just to output nothing inside a component instead of outright making the website destroy itself (no website rendered)
-                        */}
+                      
                         <Link 
                             style={{color: 'inherit',textDecoration: 'inherit', width: '100%'}}
                             to={page?.to ? page.to : '/'}
@@ -100,7 +97,13 @@ const DrawerForSmallScreen = ({open, onClose}) =>(
 )
 
 function MainLayout(){
+    const [openDrawer, setOpenDrawer] = useState(false)
+    
+    const toggleDrawer = () => setOpenDrawer(!openDrawer)
 
+    return (
+        
+    )
 }
 
 export default MainLayout
