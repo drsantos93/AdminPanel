@@ -70,6 +70,37 @@ const DrawerForSmallScreen = ({open, onClose}) =>(
             display: {xs: 'block', sm: 'none', md: 'none'},
         }}
     >
-
+        <Toolbar/>
+        <Box sx={{overflowY: 'auto'}}>
+            <List>
+                {
+                   pages.map((page,index) => (
+                    <ListItem key={index} disablePadding>
+                        {/* null safety (?):
+                            variable?.key
+                            just to output nothing inside a component instead of outright making the website destroy itself (no website rendered)
+                        */}
+                        <Link 
+                            style={{color: 'inherit',textDecoration: 'inherit', width: '100%'}}
+                            to={page?.to ? page.to : '/'}
+                        >
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    {page?.icon ? page.icon : ''}
+                                </ListItemIcon>
+                                <ListItemText primary={page?.label ? page.label: ''} />
+                            </ListItemButton>
+                        </Link>
+                    </ListItem>
+                   ))
+                }
+            </List>
+        </Box>
     </Drawer>
 )
+
+function MainLayout(){
+
+}
+
+export default MainLayout
