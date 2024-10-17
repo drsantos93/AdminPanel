@@ -102,7 +102,38 @@ function MainLayout(){
     const toggleDrawer = () => setOpenDrawer(!openDrawer)
 
     return (
-        // I like trains
+        // parent
+      <Box sx={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
+        {/* children */}
+        <Box sx={{flex: 1, display: 'flex'}}>
+            {/* header and nav */}
+            <Box>
+                <AppBar sx={{zIndex: theme => theme.zIndex.drawer + 1}}>
+                    <Toolbar>
+                        <IconButton
+                            size='large'
+                            edge='start'
+                            color='inherit'
+                            aria-label='menu'
+                            sx={{mr: 2, display: {sm: 'block', md: 'none'}}}
+                            onClick={toggleDrawer}
+                        >
+                            <Menu/>
+                        </IconButton>
+                        <Typography variant='h6' component='div'>
+                            Admin Panel of IDK yet
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+                <DrawerForWideScreen/>
+                <DrawerForSmallScreen open={openDrawer} onClose={toggleDrawer} />
+            </Box>
+            {/* content */}
+            <Box pt={8} sx={{height: '100%', width: '100%', display: 'flex', flexDirection: 'row'}}>
+                <Outlet/>
+            </Box>
+        </Box>
+      </Box>
     )
 }
 
