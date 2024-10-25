@@ -16,7 +16,7 @@ export const retrieveProfiles = async () =>{
 // add, edit, delete
 // DML = Data Manipulation Language
 export const DMLProfiles = async (inputs, type) =>{
-    const res = await fetch(`${URL}profiles`,{
+    const res = await fetch(`${URL}profiles/`,{
         method: type,
         headers:{
             Accept: 'application/json',
